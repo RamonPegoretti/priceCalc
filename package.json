@@ -1,0 +1,9 @@
+{
+  "name": "pricecalc",
+  "private": true,
+  "description": "Embeddable website and care plan price calculator",
+  "scripts": {
+    "test": "node --test",
+    "start": "npx --yes serve@14.2.4 ."
+  }
+}

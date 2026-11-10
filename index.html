@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Website and care plan pricing: build your package and see the price instantly.">
+<title>Website Pricing Calculator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: single centered column, the calculator is the page */
+:root { --bg:#f4f4f8; --fg:#1c1c24; --muted:#5f5f70; --accent:#4f46e5; --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#14141b; --fg:#ececf2; --muted:#a4a4b4; --accent:#8b85ff; color-scheme:dark; } }
+:root[data-theme="dark"] { --bg:#14141b; --fg:#ececf2; --muted:#a4a4b4; --accent:#8b85ff; color-scheme:dark; }
+body { background:var(--bg); color:var(--fg); font-family:var(--font); padding-block:32px 48px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+.intro { max-width:600px; margin:0 auto 20px; }
+.intro p { margin:0; color:var(--muted); font-size:.85rem; letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
+#calc { --pc-font:var(--font); }
+</style>
+</head>
+<body>
+<div data-pricing-calculator data-config="/pricing.json" id="calc"></div>
+<noscript>Please enable JavaScript to use the price calculator.</noscript>
+<script src="/pricing-calculator.js" defer></script>
+</body>
+</html>

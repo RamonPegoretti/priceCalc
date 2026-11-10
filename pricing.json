@@ -1,0 +1,208 @@
+{
+  "title": "Your website, priced in seconds",
+  "subtitle": "Build your package and see the price instantly.",
+  "currencies": [
+    {
+      "code": "CHF",
+      "locale": "de-CH",
+      "rate": 1,
+      "default": true
+    },
+    {
+      "code": "EUR",
+      "locale": "de-DE",
+      "rate": 1.07
+    },
+    {
+      "code": "USD",
+      "locale": "en-US",
+      "rate": 1.25
+    }
+  ],
+  "decimals": 0,
+  "tiersLabel": "Website package",
+  "tiers": [
+    {
+      "id": "base",
+      "label": "Base",
+      "description": "Professional website on a polished template",
+      "price": 1000,
+      "included": 1,
+      "unitPrice": 150,
+      "default": true
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "description": "Completely custom design, made for your brand",
+      "price": 2500,
+      "included": 1,
+      "unitPrice": 200
+    }
+  ],
+  "quantity": {
+    "label": "Number of pages",
+    "unitLabel": "extra page",
+    "unitLabelPlural": "extra pages",
+    "min": 1,
+    "max": 30,
+    "default": 5,
+    "hint": "The home page is included in the package price."
+  },
+  "options": [
+    {
+      "id": "languages",
+      "label": "Languages",
+      "summaryLabel": "Languages",
+      "display": "buttons",
+      "zeroLabel": "included",
+      "hint": "Each extra language adds 10% to the website price.",
+      "choices": [
+        {
+          "id": "1",
+          "label": "1"
+        },
+        {
+          "id": "2",
+          "label": "2",
+          "percent": 10
+        },
+        {
+          "id": "3",
+          "label": "3",
+          "percent": 20
+        },
+        {
+          "id": "4",
+          "label": "4",
+          "percent": 30
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery time",
+      "summaryLabel": "Delivery",
+      "display": "buttons",
+      "zeroLabel": "standard",
+      "choices": [
+        {
+          "id": "4w",
+          "label": "4 weeks"
+        },
+        {
+          "id": "3w",
+          "label": "3 weeks",
+          "price": 100
+        },
+        {
+          "id": "2w",
+          "label": "2 weeks",
+          "price": 200
+        },
+        {
+          "id": "1w",
+          "label": "1 week",
+          "price": 300
+        }
+      ]
+    }
+  ],
+  "recurring": {
+    "title": "Care plan",
+    "subtitle": "Hosting and maintenance after launch. Yearly plans also get a discount on the website.",
+    "perMonthLabel": "/ month",
+    "allowNone": true,
+    "noneLabel": "No care plan",
+    "noneDescription": "I'll host and maintain it myself",
+    "plans": [
+      {
+        "id": "hosting",
+        "label": "Hosting",
+        "price": 25,
+        "features": [
+          "Swiss hosting & SSL",
+          "Domain management",
+          "Daily backups"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "label": "Maintenance",
+        "price": 69,
+        "default": true,
+        "features": [
+          "Everything in Hosting",
+          "Updates & security monitoring",
+          "Up to 30 min of content changes / month"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium",
+        "price": 129,
+        "features": [
+          "Everything in Maintenance",
+          "Up to 2 h of changes / month",
+          "Priority support",
+          "Monthly report"
+        ]
+      }
+    ]
+  },
+  "billing": [
+    {
+      "id": "monthly",
+      "label": "Monthly",
+      "suffix": " / month",
+      "multiplier": 1,
+      "months": 1,
+      "default": true
+    },
+    {
+      "id": "yearly",
+      "label": "Yearly",
+      "suffix": " / year",
+      "multiplier": 9,
+      "listMultiplier": 12,
+      "months": 12,
+      "badge": "3 months free",
+      "savingLabel": "3 months free",
+      "showEquivalent": "That's {amount} per month"
+    }
+  ],
+  "conditionalDiscounts": [
+    {
+      "when": {
+        "plan": "hosting",
+        "billing": "yearly"
+      },
+      "percent": 5,
+      "max": 30,
+      "label": "Yearly Hosting discount"
+    },
+    {
+      "when": {
+        "plan": "maintenance",
+        "billing": "yearly"
+      },
+      "percent": 10,
+      "max": 150,
+      "label": "Yearly Maintenance discount"
+    },
+    {
+      "when": {
+        "plan": "premium",
+        "billing": "yearly"
+      },
+      "percent": 15,
+      "max": 300,
+      "label": "Yearly Premium discount"
+    }
+  ],
+  "note": "This is an estimate. The final quote follows a short call.",
+  "theme": {
+    "accent": "#4f46e5",
+    "accentSoft": "#eef2ff"
+  }
+}
