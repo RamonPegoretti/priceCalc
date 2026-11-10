@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+# Publishes the site when Pages is set to "Source: GitHub Actions".
+# If Pages is set to "Deploy from a branch", GitHub builds it itself and this job skips.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check Pages source
+        id: mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: echo "type=$(gh api repos/${{ github.repository }}/pages --jq .build_type || echo none)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.mode.outputs.type == 'workflow'
+      - name: Run price tests
+        if: steps.mode.outputs.type == 'workflow'
+        run: npm test
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.mode.outputs.type == 'workflow'
+        with:
+          path: .
+      - id: deployment
+        if: steps.mode.outputs.type == 'workflow'
+        uses: actions/deploy-pages@v4
